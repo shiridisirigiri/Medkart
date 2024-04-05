@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block title %}Customer Registration{% endblock %}
+
+{% block content %}
+<style>
+    .errorlist{
+        color: red;
+    }
+    
+    .grid-box{
+        display: grid;
+        grid-template-columns: 0.5fr 1.5fr;
+        grid-gap: 3vh;
+    }
+
+    #id_username, #id_password, #id_email, #id_full_name, #id_address{
+        background-color: #e0e0e0;
+        border: 2px #c9c9c9 solid;
+        border-radius: 15px;
+        padding: 2px;
+    }
+    #id_username:hover, #id_password:hover, #id_email:hover, #id_full_name:hover, #id_address:hover{
+        background-color: #d6d3d3;
+    }
+
+    #id_username:focus, #id_password:focus, #id_email:focus, #id_full_name:focus, #id_address:focus{
+        outline: 2px #d6d3d3 solid;
+    }
+    
+    .icon{
+        display: flex;
+        justify-content: center;
+    }
+    
+</style>
+<script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <!-- <h3><center>Customer Registration Form</center></h3><hr> -->
+            <div class="icon">
+                <lord-icon
+                    src="https://cdn.lordicon.com/dxjqoygy.json"
+                    trigger="loop"
+                    delay="1000"
+                    colors="primary:#3fa7d6,secondary:#707070"
+                    style="width:250px;height:250px">
+                </lord-icon>
+            </div>
+            <form action="" method="POST" autocomplete="off">
+                {% csrf_token %}
+                <div class="grid-box">
+                    <label for="id_username">Username</label>
+                    {{form.username}}
+                    <label for="id_password">Password</label>
+                    {{form.password}}
+                    <label for="id_email">Email</label>
+                    {{form.email}}
+                    <label for="id_full_name">Full Name</label>
+                    {{form.full_name}}
+                    <label for="id_address">Address</label>
+                    {{form.address}}
+                </div>
+                <br>
+                <center><button class="btn btn-dark">Register as a Customer</button></center>
+            </form>
+            <br>
+            <center><p> Already have an account? <a href="{% url 'ecomapp:customerlogin' %}">Login here</a></p></center>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,210 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+<center><h1 class="animate-charcter">Welcome to MedKart </h1></center>
+<hr>
+{% if product_list.has_previous == False %}
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="row">
+            <div class="col-lg-4">
+                <img class="d-block w-100" src="/media/carousel/mri.jpeg" height="280" width="20" alt="First slide">
+            </div>
+            <div class="col-lg-4">
+                <img class="d-block w-100" src="/media/carousel/image-removebg-preview.png" height="280" width="10" alt="First slide">
+            </div>
+            <div class="col-lg-4">
+                <img class="d-block w-100" src="/media/carousel/bednoback.png" height="280" width="20" alt="First slide">
+            </div>
+        </div>
+        
+      </div>
+      <div class="carousel-item">
+        <div class="row">
+            <div class="col-lg-4">
+                <img class="d-block w-100" src="/media/carousel/mri.jpeg" height="280" width="20" alt="First slide">
+            </div>
+            <div class="col-lg-4">
+                <img class="d-block w-100" src="/media/carousel/image-removebg-preview.png" height="280" width="10" alt="First slide">
+            </div>
+            <div class="col-lg-4">
+                <img class="d-block w-100" src="/media/carousel/bednoback.png" height="280" width="20" alt="First slide">
+            </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="row">
+            <div class="col-lg-4">
+                <img class="d-block w-100" src="/media/carousel/mri.jpeg" height="280" width="20" alt="First slide">
+            </div>
+            <div class="col-lg-4">
+                <img class="d-block w-100" src="/media/carousel/image-removebg-preview.png" height="280" width="10" alt="First slide">
+            </div>
+            <div class="col-lg-4">
+                <img class="d-block w-100" src="/media/carousel/bednoback.png" height="280" width="20" alt="First slide">
+            </div>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+{% endif %}
+<div class="container">
+
+    
+    
+
+    
+    <div class="row mt-3">
+        {% for p in product_list %}
+        <div class="col-md-4 card" style="height: 27rem; background-color: #e0e0e0;">
+            <div class="card-body">
+                <!-- <h4><b><a href="{% url 'ecomapp:productdetail' p.slug %}" style="color:#4F413E">{{p.title}}</a></b></h4><br> -->
+                <h4><b><a href="{% url 'ecomapp:productdetail' p.slug %}" style="color:#4F413E">{{p.title}}</a></b></h4><br>
+                <img src="{{p.image.url}}" alt="" class="img-fluid" style="height: 200px; object-fit: contain;">
+                <p class="mt-3"><b>Price:</b> Rs. {{p.selling_price}}</p>
+                <!-- <strike>Rs. {{p.marked_price}}</strike> -->
+                <a href="{% url 'ecomapp:addtocart' p.id %}" class="btn btn-dark" data-inline="true">Add To Cart</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <br>
+    <nav aria-label="...">
+        <ul class="pagination">
+            {% if product_list.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ product_list.previous_page_number }}">Previous</a>
+              </li>
+            {% else %}
+            <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+            </li>
+            {% endif %}
+
+            {% for i in product_list.paginator.page_range %}
+            {% if i == product_list.number %}
+            <li class="page-item"><a class="page-link">{{i}}</a></li>
+            {% else %}
+            <li class="page-item"><a class="page-link" href="?page={{i}}">{{i}}</a></li>
+            {% endif %}
+            {% endfor %}
+
+            {% if product_list.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ product_list.next_page_number }}">Next</a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Next</a>
+            </li>
+            {% endif %}
+        </ul>
+      </nav>
+
+</div>
+
+<style>
+    body{
+        background-color: whitesmoke;
+        
+    }
+    #noback{
+        background-image: none;
+    }
+    .container{
+        color: black;
+        text-align: center;
+    }
+    .d-block w-100{
+        /* border-radius: 55px;
+        padding: 10px;  */
+        object-fit: contain;
+    }
+    .animate-charcter
+    {
+    text-transform: uppercase;
+    background-image: linear-gradient(
+        -225deg,
+        /* #231557 0%,
+        #44107a 29%,
+        #ff1361 67%,
+        #fff800 100% */
+        #393646 0%,
+        #393646 29%,
+        #116D6E 67%,
+        #F4EEE0 100%
+    );
+    background-size: auto auto;
+    background-clip: border-box;
+    background-size: 200% auto;
+    color: #fff;
+    background-clip: text;
+    /* text-fill-color: transparent; */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textclip 2s linear infinite;
+    display: inline-block;
+        font-size: 45px; 
+    text-align: center;
+    }
+
+    @keyframes textclip {
+    to {
+        background-position: 200% center;
+    }
+    }
+
+    .container-fluid{
+        height: 100%;
+        width: 100%;
+    }
+
+    .card{
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+    padding: 14px 80px 18px 36px;
+    cursor: pointer;
+    }
+
+    .card:hover{
+        transform: scale(1.05);
+        transition: 500ms;
+    box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+    }
+
+    /* .card h3{
+    font-weight: 600;
+    } */
+
+    /* .card img{
+    position: absolute;
+    top: 20px;
+    right: 15px;
+    max-height: 120px;
+    } */
+
+    .card-body{
+    /* background-image: url(https://ionicframework.com/img/getting-started/ionic-native-card.png); */
+        background-repeat: no-repeat;
+        background-position: right;
+        background-size: 80px;
+    }
+</style>
+
+{% endblock %}
+

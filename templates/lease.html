@@ -1,0 +1,203 @@
+{% extends 'base.html' %}
+
+{% block title %}Lease{% endblock %}
+
+{% block content %}
+<div class="container">
+
+    <h1 class="text-center">Lease Form </h1>
+    <hr>
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+    <form action="" method="post" enctype="multipart/form-data">
+        <div class="grid-box">
+        <input type="hidden" name="csrfmiddlewaretoken" value="auVjKwcRolVcTCseliJBC40i7bB8Eny1doEMcvfHaIzchCDxTZYPoEwUbiVvXDqX">
+    
+    
+    <label for="id_name">Name:</label>
+    <input type="text" name="name" maxlength="200" required id="id_name">
+    
+    
+  
+
+
+    
+    <label for="id_email">Email:</label>
+    <input type="email" name="email" maxlength="254" id="id_email">
+    
+    
+  
+
+
+    
+    <label for="id_address">Address:</label>
+    <textarea name="address" cols="40" rows="10" required id="id_address">
+</textarea>
+    
+    
+  
+
+
+    
+    <label for="id_phone_number">Phone number:</label>
+    <input type="text" name="phone_number" maxlength="200" required id="id_phone_number">
+    
+    
+  
+
+
+    
+    <label for="id_secondary_number">Secondary number:</label>
+    <input type="text" name="secondary_number" maxlength="200" required id="id_secondary_number">
+    
+    
+  
+
+
+    
+    <label for="id_date">Date:</label>
+    <input type="text" name="date" maxlength="200" required id="id_date">
+    
+    
+  
+
+
+    
+    <label for="id_current_designation">Current designation:</label>
+    <input type="text" name="current_designation" maxlength="200" required id="id_current_designation">
+    
+    
+  
+
+
+    
+    <label for="id_monthly_salary">Monthly salary:</label>
+    <input type="text" name="monthly_salary" maxlength="200" required id="id_monthly_salary">
+    
+    
+  
+
+
+    
+    <label for="id_address_of_residence">Address of residence:</label>
+    <textarea name="address_of_residence" cols="40" rows="10" required id="id_address_of_residence">
+</textarea>
+    
+    
+  
+
+
+    
+    <label for="id_landlord_name">Landlord name:</label>
+    <input type="text" name="landlord_name" maxlength="200" required id="id_landlord_name">
+    
+    
+  
+
+
+    
+    <label for="id_duration_lived_in_this_residence">Duration lived in this residence:</label>
+    <input type="text" name="duration_lived_in_this_residence" maxlength="200" required id="id_duration_lived_in_this_residence">
+    
+    
+  
+
+
+    
+    <label for="id_explanation">Explanation:</label>
+    <textarea name="explanation" cols="40" rows="10" required id="id_explanation">
+</textarea>
+    
+    
+  
+
+
+    
+    <label for="id_required_lease_time">Required lease time:</label>
+    <input type="text" name="required_lease_time" maxlength="200" required id="id_required_lease_time">
+    
+    
+      
+    
+  
+  </div><br>
+  <center>
+    <button class="btn btn-dark">Submit</button>
+    {% if error %}
+    <br>
+    <li style="color: red;">{{error}}</li>
+    {% endif %}
+</center>
+    </form>
+        </div></div>
+</div>
+
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+        body{
+            font-family: 'Nunito', sans-serif;
+            font-weight: bold;
+            font-size: 19px;
+        }
+        #top-bar{
+            background-color: #3FA7D6;
+        }
+        
+        .nav-link{
+            color: white;
+        }
+        .navbar-link{
+            color: white;
+        }
+        .nav-link:hover{
+            color: #27187E;
+        }
+        .form-control{
+            background-color: #e0e0e0;
+        }
+        .btn{
+            background-color: #757761;
+            border-color: #757761;
+        }
+        .btn:hover{
+            background-color: #707070;
+            border-color: #707070;
+            transform: scale(1.05);
+            transition: 300ms;
+        }
+        .errorlist {
+        color: red;
+    }
+
+    .grid-box{
+        display: grid;
+        grid-template-columns: 0.5fr 1.5fr;
+        grid-gap: 3vh;
+    }
+
+    #id_name, #id_email, #id_address, #id_phone_number, #id_secondary_number, #id_date, #id_current_designation, #id_monthly_salary, #id_address_of_residence, #id_landlord_name, #id_duration_lived_in_this_residence, #id_explanation,#id_required_lease_time{
+        background-color: #e0e0e0;
+        border: 2px #c9c9c9 solid;
+        border-radius: 15px;
+        padding: 2px;
+    }
+    #id_username:hover, #id_password:hover, #id_email:hover, #id_full_name:hover, #id_address:hover{
+        background-color: #d6d3d3;
+    }
+
+    #id_username:focus, #id_password:focus, #id_email:focus, #id_full_name:focus, #id_address:focus{
+        outline: 2px #d6d3d3 solid;
+    }
+
+    .icon{
+        display: flex;
+        justify-content: center;
+    }
+    </style>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+{% endblock %}
